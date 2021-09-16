@@ -1,7 +1,12 @@
-import React, { useMemo } from "react";
-import { animated, useTransition } from "react-spring";
+import React, { useState } from "react";
 import Message from "../Message/index.js";
 import "./style.css";
+
+const messages = [
+    "Welcome Traveler", 
+    "Rest a While won't you.",
+    "Or Not, whatever."
+  ];
 
 
 const AdventureBox = () => {
@@ -11,13 +16,13 @@ const AdventureBox = () => {
         if (currentMessage < messages.length - 1) {
             setCurrentMessage(currentMessage + 1);
         } else {
-            setCurrentMessage(0)
-        };
+            setCurrentMessage(0);
+        }
     };
 
     return (
         <div className="AdventureWindow">
-            <Message />
+            <Message message={messages[currentMessage]} key={currentMessage} />
             <div onClick={handleClick} className="AdventureFooter">
                 Enter
             </div>
